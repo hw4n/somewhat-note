@@ -14,13 +14,13 @@ function List() {
   }, []);
 
   return (
-    <div>
+    <ul>
     {files ? (
       files.map(fname => {
-        return <Link to={`/read/${fname}`}>{fname}</Link>
+        return <li><Link to={`/read/${fname}`}>{fname}</Link></li>
       })
     ) : <></>}
-    </div>
+    </ul>
   )
 }
 
