@@ -40,9 +40,19 @@ app.get("/note/:title/image/:filename", (req, res) => {
   }
 });
 
-app.get("*", (req, res) => {
-  res.status(404).json();
-});
+if (process.env.NODE_ENV === "production") {
+  console.log("Serving client files");
+
+  app.use(express.static(path.join(__dirname, "../../build")));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, "../../build/index.html"));
+  });
+} else {
+  // return 404 for any other requests if nonproduction
+  app.get("*", (req, res) => {
+    res.status(404).json();
+  });
+}
 
 app.listen(LISTENING_PORT, () => {
   console.log(`Server started (:${LISTENING_PORT})`);
