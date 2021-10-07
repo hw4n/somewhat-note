@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function List() {
   const [ files, setFiles ] = useState<[string]>();
@@ -16,7 +17,7 @@ function List() {
     <div>
     {files ? (
       files.map(fname => {
-        return <div>{fname}</div>
+        return <Link to={`/read/${fname}`}>{fname}</Link>
       })
     ) : <></>}
     </div>
