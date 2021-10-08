@@ -21,12 +21,22 @@ app.get("/ls", (req, res) => {
 });
 
 app.get("/note/:title", (req, res) => {
+  
   fs.readFile(`./note/${req.params.title}/index.md`, 'utf8', (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).json();
     } else {
-      res.status(200).json({ data });
+      const { size, ctime, mtime, birthtime } = fs.statSync(`./note/${req.params.title}/index.md`)
+      res.status(200).json({
+        data,
+        meta: {
+          size,
+          ctime,
+          mtime,
+          birthtime
+        }
+      });
     }
   });
 });
