@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import './Document.css';
 
 function Document(props: any) {
   const documentName = props.match.params.document;
@@ -14,9 +15,11 @@ function Document(props: any) {
   }, [documentName]);
 
   return (
-    <pre>
-      {body}
-    </pre>
+    <div className="article">
+      <pre>
+        {body}
+      </pre>
+    </div>
   )
 }
 

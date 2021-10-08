@@ -1,0 +1,16 @@
+#root {
+  min-height: 100vh;
+  width: 60%;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.article {
+  padding: 20px;
+}
+
+.article pre {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
