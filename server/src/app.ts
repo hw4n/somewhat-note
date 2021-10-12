@@ -41,10 +41,10 @@ app.get("/note/:title", (req, res) => {
   });
 });
 
-app.get("/note/:title/image/:filename", (req, res) => {
+app.get("/read/:title/:filename", (req, res) => {
   const { title, filename } = req.params;
-  if (fs.existsSync(`./note/${title}/image/${filename}`)) {
-    res.status(200).sendFile(path.join(__dirname, `../note/${title}/image/${filename}`));
+  if (fs.existsSync(`./note/${title}/${filename}`)) {
+    res.status(200).sendFile(path.join(__dirname, `../note/${title}/${filename}`));
   } else {
     res.status(404).json();
   }
